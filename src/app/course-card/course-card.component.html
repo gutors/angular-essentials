@@ -1,0 +1,36 @@
+@if (course) {
+    <div>
+        <h1> {{index}} {{ course.description }} </h1>
+        
+        @if (course.iconUrl) {
+            <img width="300" [src]="course.iconUrl" alt="img not found" >
+        }
+        @else if (course.id === 1) {
+            <h2> Course with id 1 is here</h2>
+        }
+        @else {
+            <h2> No Image Available</h2>
+        }
+        <h2> {{ course.longDescription }}</h2>
+
+        @switch (course.category) {
+            @case ("BEGINNER") {
+                <div class="category">BEGINNER</div>
+            }
+
+            @case ("INTERMEDIATE") {
+                <div class="category">INTERMEDIATE</div>
+            }
+
+            @case ("ADVANCED") {
+                <div class="category">ADVANCED</div>
+            }
+            @default {
+                <div class="category">UNKNOWN</div>
+            }
+        }
+
+        <input class="demo" [value]="course.description" #titleInput />
+        <button (click)="onTitleUpdated(titleInput.value)">Update Title</button>
+    </div>
+}

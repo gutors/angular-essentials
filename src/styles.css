@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.category {
+    margin-top: 15px;
+    background: lightcyan;
+    font-size: 14px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 2px 3px;
+    display: inline;
+}
