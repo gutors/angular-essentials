@@ -226,9 +226,10 @@
         </defs>
       </svg>
       <div>
+        <p [appHighlight]="'red'">Test Highlight Directive</p>
         <div>Start date: {{ startDate | date : 'MMM dd yyyy' }}</div>
         <div>{{ data.title | uppercase | lowercase | titlecase}}</div>
-        <div>{{ price | number: '3.3-5 | currency: 'EUR' }}</div>
+        <div>{{ price | number: '3.3-5' | currency: 'EUR' }}</div>
         <div>{{ price | currency: 'EUR' }}</div>
         <div>Percentage: {{ rate | percent }}</div>
       </div>

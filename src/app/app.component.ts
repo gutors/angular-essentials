@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { COURSES } from '../db-data';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { Course } from './model/course';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CoursesService } from './services/courses.service';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CourseCardComponent, CommonModule],
+  imports: [RouterOutlet, CourseCardComponent, CommonModule, HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild(CourseCardComponent)
+  courseCard = new CourseCardComponent()
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService) {}
 
+  ngAfterViewInit(): void {
+    console.log(this.courseCard)
   }
 
   courses$: Observable<Course[]> = new Observable<Course[]>()
