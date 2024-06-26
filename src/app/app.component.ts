@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { COURSES } from '../db-data';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { Course } from './model/course';
@@ -11,7 +11,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CourseCardComponent, CommonModule, HighlightDirective],
+  imports: [RouterModule, RouterOutlet, CourseCardComponent, CommonModule, HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

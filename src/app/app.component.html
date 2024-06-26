@@ -226,6 +226,16 @@
         </defs>
       </svg>
       <div>
+        <nav>
+          <ul>
+            <li>
+              <a routerLink="/course-card">Course Card Component</a>
+            </li>
+            <li>
+              <a routerLink="/course-info/1">Course Info Component</a>
+            </li>
+          </ul>
+        </nav>
         <p [appHighlight]="'red'">Test Highlight Directive</p>
         <div>Start date: {{ startDate | date : 'MMM dd yyyy' }}</div>
         <div>{{ data.title | uppercase | lowercase | titlecase}}</div>
