@@ -12,6 +12,10 @@ export class CoursesService {
     console.log('creating the courses service')
   }
 
+  loadCourse(courseId: number): Observable<Course> {
+    return this.http.get<Course>(`http://localhost:9000/api/courses/${courseId}`)
+  }
+
   loadCourses(): Observable<Course[]> {
     const params = new HttpParams().set("page", 1).set("pageSize", 10)
 

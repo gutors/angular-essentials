@@ -1,1 +1,39 @@
-<p>course-info works!</p>
+<p>{{ course | json }}</p>
+
+<div [hidden]="submited">
+<form #courseForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+       <label for="name">Name</label>
+       <input type="text" id="name" required
+            [(ngModel)]="course.description"
+            name="name" > 
+
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" required
+            [(ngModel)]="course.longDescription"
+            name="description" />
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select id="category" required
+            [(ngModel)]="course.category"
+            name="category">
+            @for (category of categories; track category) {
+                <option value="{{category}}">{{ category }}</option>
+            }
+        </select>
+    </div>
+    <button [disabled]="!courseForm.form.valid" type="submit">Submit</button>
+</form>
+</div>
+<div [hidden]="!submited">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+        <div class="col-xs-3">Name: {{ course.description }}</div>
+        <div class="col-xs-9">Description: {{ course.longDescription }}</div>
+        <div class="col-xs-3">Category: {{ course.category }}</div>
+        <button (click)="submited = false">Edit</button>
+    </div>
+</div>

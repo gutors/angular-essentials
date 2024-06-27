@@ -7,11 +7,17 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CoursesService } from './services/courses.service';
 import { HighlightDirective } from './directives/highlight.directive';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, CourseCardComponent, CommonModule, HighlightDirective],
+  imports: [RouterModule,
+    RouterOutlet,
+    CourseCardComponent,
+    CommonModule,
+    HighlightDirective,
+    FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
