@@ -28,3 +28,31 @@
     
     <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>>
+
+<h2>RxJs Examples</h2>
+<div>
+    @if (user$ | async; as user) {
+        <p>User ID: {{ user.id }}</p>
+        <p>User Name: {{ user.name }}</p>
+    }
+</div>
+
+<div>
+    <h2>RxJs Combine Latest Examples</h2>
+    @if (data$ | async; as data) {
+        @for (course of (data.courses); track course.id) {
+            <p>Course ID: {{ course.id }}</p>
+            <p>Course Name: {{ course.description }}</p>
+        }
+
+        @for (coursename of (data.coursesnames); track coursename) {
+            <p>Course Name: {{ coursename }}</p>
+        }
+
+        @for (user of (data.user); track user.id) {
+            <p>User ID: {{ user.id }}</p>
+            <p>User Name: {{ user.name }}</p>
+        }
+
+    }
+</div>
