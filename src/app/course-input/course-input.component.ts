@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course-input',
@@ -9,14 +9,30 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './course-input.component.css'
 })
 export class CourseInputComponent {
+  firstName = ''
+  lastName = ''
  
   profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl(this.firstName, [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    lastName: new FormControl(this.lastName, [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
  })
 
   onSubmit() {
     console.log(this.profileForm.value);
   }
-  
+
+  get first() {
+    return this.profileForm.get('firstName');
+  }
+
+  get last() {
+    return this.profileForm.get('lastName');
+  }
+
 }
