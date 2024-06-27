@@ -4,10 +4,18 @@
 <form #courseForm="ngForm" (ngSubmit)="onSubmit()">
     <div>
        <label for="name">Name</label>
-       <input type="text" id="name" required
+       <input type="text" id="name" required minlength="4"
             [(ngModel)]="course.description"
-            name="name" > 
-
+            name="name"
+            #name="ngModel" > 
+        @if (name.invalid && (name.dirty || name.touched)) {
+            @if (name.hasError('required')) {
+                <div>Name is required</div>
+            }
+            @if (name.hasError('minlength')) {
+                <div>Name must be at least 4 characters long</div>
+            }
+        }
     </div>
     <div>
         <label for="description">Description</label>
